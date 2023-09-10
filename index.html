@@ -7,27 +7,56 @@
 </head>
 <body>
     <script>
-        let choice = ['rock', 'paper', 'scissors']
 
-        function playRound(userSelection) {
-            let userChoice = userSelection.toLowerCase();
-            let computerChoice = choice[Math.floor(Math.random() * choice.length)]
+        let computerSelection, userSelection; //declaring local variables for user and computer selections
+        let playerScore = 0; //keeping player score
+        let computerScore = 0; //keeping computer score
 
-            switch (true) {
-                case (userChoice === computerChoice):
+        function computerChoice() {
+            let choice = ['rock', 'paper', 'scissors'];
+            let randomChoice = choice[(Math.floor(Math.random() * choice.length))];
+            console.log(randomChoice);
+            return randomChoice;
+        }
+        function playRound(userSelection, computerSelection) {
+            let userChoice = prompt('rock, paper, or scissors: '); //prompts the user for a choice
+            userSelection = userChoice.toLowerCase(); //sends user typed selection to lowercase allowing for all typecases to be used - can type 'scISsorS' and it will return 'scissors'
+            computerSelection = computerChoice();
+
+            switch (true) { //switch looks for a true statement in below cases
+                case (userSelection === computerSelection): //looks for the userChoice and computerChoice to be the same
                     console.log('Tie game');
                     break;
                 
-                case (userChoice == 'rock' && computerChoice == 'scissors'):
-                case (userChoice == 'paper' && computerChoice == 'rock'):
-                case (userChoice == 'scissors' && computerChoice == 'paper'):
+                case (userSelection == 'rock' && computerSelection == 'scissors'):
+                case (userSelection == 'paper' && computerSelection == 'rock'): //returns true if the player wins in the game of rock, paper, scissors
+                case (userSelection == 'scissors' && computerSelection == 'paper'):
                     console.log('You won');
+                    playerScore++; //add 1 to the player score
                     break;
 
-                default:
+                default: //used default to return false when the player loses
                     console.log('You lost');
+                    computerScore++; //add 1 to computer score
             }
         }
+
+        function game() {
+
+            for (let i = 0; i < 5; i++) { //run the game 5 times; i = round number
+                playRound(userSelection, computerSelection);
+            }
+
+            if (playerScore > computerScore) {
+                console.log('You win! | Player: ' + playerScore + ' | Computer: ' + computerScore + ''); //win statement with scores
+            } else if (playerScore === computerScore) {
+                console.log('You tied. | Player: ' + playerScore + ' | Computer: ' + computerScore + '') //tie statement with scores
+            } else {
+                console.log('You lose... | Player: ' + playerScore + ' | Computer: ' + computerScore + ''); //lose statement with scores
+            }
+        }
+
+        game(); //calls up the game when page is loaded.
     </script>
 </body>
 </html>
