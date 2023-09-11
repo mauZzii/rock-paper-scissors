@@ -3,59 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Fantasy Rock Paper Scissors</title>
 </head>
 <body>
-    <script>
-
-        let computerSelection, userSelection; //declaring local variables for user and computer selections
-        let playerScore = 0; //keeping player score
-        let computerScore = 0; //keeping computer score
-
-        function computerChoice() {
-            let choice = ['rock', 'paper', 'scissors'];
-            let randomChoice = choice[(Math.floor(Math.random() * choice.length))];
-            return randomChoice;
-        }
-        function playRound(userSelection, computerSelection) {
-            let userChoice = prompt('rock, paper, or scissors: '); //prompts the user for a choice
-            userSelection = userChoice.toLowerCase(); //sends user typed selection to lowercase allowing for all typecases to be used - can type 'scISsorS' and it will return 'scissors'
-            computerSelection = computerChoice();
-
-            switch (true) { //switch looks for a true statement in below cases
-                case (userSelection === computerSelection): //looks for the userChoice and computerChoice to be the same
-                    console.log('Tie game');
-                    break;
-                
-                case (userSelection == 'rock' && computerSelection == 'scissors'):
-                case (userSelection == 'paper' && computerSelection == 'rock'): //returns true if the player wins in the game of rock, paper, scissors
-                case (userSelection == 'scissors' && computerSelection == 'paper'):
-                    console.log('You won');
-                    playerScore++; //add 1 to the player score
-                    break;
-
-                default: //used default to return false when the player loses
-                    console.log('You lost');
-                    computerScore++; //add 1 to computer score
-            }
-        }
-
-        function game() {
-
-            for (let i = 0; i < 5; i++) { //run the game 5 times; i = round number
-                playRound(userSelection, computerSelection);
-            }
-
-            if (playerScore > computerScore) {
-                console.log('You win! | Player: ' + playerScore + ' | Computer: ' + computerScore + ''); //win statement with scores
-            } else if (playerScore === computerScore) {
-                console.log('You tied. | Player: ' + playerScore + ' | Computer: ' + computerScore + '') //tie statement with scores
-            } else {
-                console.log('You lose... | Player: ' + playerScore + ' | Computer: ' + computerScore + ''); //lose statement with scores
-            }
-        }
-
-        game(); //calls up the game when page is loaded.
-    </script>
+    <div class="header">
+        <h1 class="game-title">Fantasy RPS</h1>
+        <p class="game-info">There are 5 monsters in this dungeon; defeat each one to reach 
+            the treasure!
+        </p>
+        <p class="game-rules">Melee beats Range | Range beats Magic | 
+            Magic beats Melee
+        </p>
+    </div>
+    <div class="main">
+        <div class="combat-style">
+            <button class="melee-btn">Melee</button>
+            <button class="range-btn">Range</button>
+            <button class="magic-btn">Magic</button>
+        </div>
+        <div class="separator"></div>
+        <div class="round-output">
+            <div class="enemy-combat"></div>
+            <div class="round-results"></div>
+        </div>
+        <div class="game-results">
+            <p class="endText"></p>
+            <button class="playAgain">Play Again</button>
+        </div>
+    </div>
+    <div class="footer">
+        <p class="copyright">Created by mauZzi</p>
+        <div>Icons made by 
+            <a href="https://www.flaticon.com/authors/wanicon" title="wanicon">wanicon</a>
+             from 
+            <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+        </div>
+        <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a>
+             from 
+            <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+        </div>
+    </div>
 </body>
 </html>

@@ -1,0 +1,30 @@
+body {
+    font-family: 'Aclonica', cursive;
+    font-size: 24px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.header {
+    text-align: center;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+}
+
+.footer {
+    font-size: 12px;
+    text-align: center;
+    position: fixed;
+    bottom: 0px;
+    height: 70px;
+    width: 100%;
+    border-top: 4px solid #484848;
+}
+
+.copyright {
+    margin-bottom: 0px;
+    margin-top: 4px;
+}
