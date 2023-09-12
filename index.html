@@ -4,29 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
     <script src="script.js" defer></script>
-    <title>Fantasy Rock Paper Scissors</title>
+    <title>Rock Paper Scissors</title>
 </head>
 <body>
     <div class="header">
-        <h1 class="game-title">Fantasy RPS</h1>
-        <p class="game-info">There are 5 monsters in this dungeon; defeat each one to reach 
-            the treasure!
-        </p>
-        <p class="game-rules">Melee beats Range | Range beats Magic | 
-            Magic beats Melee
+        <h1 class="game-title">Rock Spock Scissors</h1>
+        <p class="game-info">
+            Rock beats Scissors, Scissors beats Spock,
+            and Spock beats Rock.
         </p>
     </div>
     <div class="main">
-        <div class="combat-style">
-            <button class="melee-btn weapon-btn"><img src="img/003-sword.png" class="melee-icon weapon-icon" alt="Melee button"></button>
-            <button class="range-btn weapon-btn"><img src="img/004-bow-and-arrow.png" class="range-icon weapon-icon" alt="Range button"></button>
-            <button class="magic-btn weapon-btn"><img src="img/005-wizard.png" class="magic-icon weapon-icon" alt="Magic button"></button>
+        <div class="player-choice">
+            <button class="rock-btn player-btn">
+                <i class="iconoir-drag-hand-gesture player-icon"></i>
+            </button>
+            <button class="spock-btn player-btn">
+                <i class="iconoir-spock-hand-gesture player-icon"></i>
+            </button>
+            <button class="scissors-btn player-btn">
+                <i class="iconoir-peace-hand player-icon"></i>
+            </button>
         </div>
         <div class="separator"></div>
         <div class="round-output">
-            <div class="enemy-combat"></div>
-            <div class="round-results"></div>
+            <div class="enemy-combat">
+                <p class="enemy-text">Enemy's Choice</p>
+                <i class="iconoir-emoji-quite enemy-icon"></i>
+            </div>
+            <div class="round-results">
+                <p class="round-number"></p>
+                <p class="lives"></p>
+                <p class="round-text"></p>
+            </div>
         </div>
         <div class="game-results">
             <p class="endText"></p>
@@ -35,15 +48,6 @@
     </div>
     <div class="footer">
         <p class="copyright">Created by mauZzi</p>
-        <div>Icons made by 
-            <a href="https://www.flaticon.com/authors/wanicon" title="wanicon">wanicon</a>
-             from 
-            <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-        </div>
-        <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a>
-             from 
-            <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-        </div>
     </div>
 </body>
 </html>
