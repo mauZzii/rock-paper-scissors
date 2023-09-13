@@ -41,8 +41,13 @@ body {
     border: none;
 }
 
-.player-choice .player-icon {
+.player-icon {
     font-size: 70px;
+    transition: all .3s;
+}
+
+.player-icon:hover {
+    font-size: 90px;
 }
 
 .round-output {
@@ -68,6 +73,10 @@ body {
 
 .round-results p {
     font-size: 18px;
+}
+
+.end-text {
+    text-align: center;
 }
 
 .play-again {

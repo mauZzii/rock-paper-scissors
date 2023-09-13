@@ -33,26 +33,16 @@ function computerChoice() {
     return computerSelection;
 };
 
-function playerChoice() {
-    PLAYERBTN.forEach((item) => {
-        item.addEventListener('click', () => {
-            const playerIcons = document.querySelectorAll('.player-icon');
-            if (item.classList.contains('rock-btn')) {
-                playerSelection = 'rock';
-              } else if (weapon.classList.contains('spock-btn')) {
-                playerSelection = 'spock';
-              } else {
-                playerSelection = 'scissors';
-              }
-        })
-    });
-    return playerSelection;
-};
+// function playerChoice() {
 
+//     return playerSelection;
+// };
+
+//this functions plays the round and then returns the lives left
 function countLives(playerSelection, computerSelection) {  
     switch (true) {
       case (playerSelection === computerSelection):
-        ROUNDOUTPUT.innerText = `Two ${playerSelection}s means a tie, no lives lost, try again!`;
+        ROUNDOUTPUT.textContent = `Two ${playerSelection}s means a tie, no lives lost, try again!`;
         break;
       case (playerSelection === 'rock' && computerSelection === 'scissors'):
       case (playerSelection === 'scissors' && computerSelection === 'spock'):
@@ -61,16 +51,64 @@ function countLives(playerSelection, computerSelection) {
         computerLives -= 1;
         break;
       default:
-        ROUNDOUTPUT.innerText = `Unfortunate.. You lost a life, because your ${playerSelection} lacks power against the enemy's ${computerSelection}!`;
+        ROUNDOUTPUT.textContent = `Unfortunate.. You lost a life, because your ${playerSelection} lacks power against the enemy's ${computerSelection}!`;
         playerLives -= 1;
         break;
     }
   
     const lives = document.querySelector('.lives');
-    lives.innerText = `Your Lives: ${playerLives} ︱ Enemy's Lives: ${computerLives}`;
+    lives.textContent = `Your Lives: ${playerLives} ︱ Enemy's Lives: ${computerLives}`;
     return [playerLives, computerLives];
-  }
+}
+
+function endGame(playerHealth, computerHealth) {
+    if (playerHealth === 0 || computerHealth === 0) {
+        PLAYERBTN.forEach((button) => {
+            button.setAttribute('disabled', '');
+            button.classList.add('disabled-button', 'opacity');
+      });
+  
+    const enemyIcon = document.querySelector('.enemy-icon');
+    enemyIcon.style.opacity = '0.5';
+  
+    const gameEndText = document.querySelector('.end-text');
+    if (playerLives > computerLives) {
+        ROUNDOUTPUT.textContent = 'The enemy has no lives left! He barely holds himself together in one piece.';
+        gameEndText.textContent = 'You Won';
+        gameEndText.style.color = '#484848';
+    } else {
+        ROUNDOUTPUT.textContent = 'Oof.. You have no lives left. Your enemy is laughing at you!';
+        gameEndText.textContent = 'You Lost!';
+        gameEndText.style.color = '#484848';
+    }
+    PLAYAGAINBTN.style.visibility = 'visible';
+    }
+}
+
+function resetGame() {
+    PLAYAGAINBTN.addEventListener('click', () => {
+      window.location.reload();
+    });
+}
 
 function playGame() {
+    PLAYERBTN.forEach((item) => {
+        item.addEventListener('click', () => {
+            const playerIcons = document.querySelectorAll('.player-icon');
+            if (item.classList.contains('rock-btn')) {
+                playerSelection = 'rock';
+              } else if (item.classList.contains('spock-btn')) {
+                playerSelection = 'spock';
+              } else {
+                playerSelection = 'scissors';
+              }
+    roundCount();
+    countLives(playerSelection, computerChoice());
+    endGame(playerLives, computerLives);
+    resetGame();
+        });
+    });
+    
+};
 
-}
+playGame();
